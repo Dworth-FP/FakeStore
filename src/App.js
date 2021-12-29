@@ -1,9 +1,12 @@
 import {useState, useEffect} from 'react'
 import React from 'react';
-import Store from './components/Store';
 import './App.css';
 import axios from 'axios';
-import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
+
+import {BrowserRouter,Route,Routes} from "react-router-dom";
+
+import Store from './components/Store';
+import Product from './components/Product';
 
 function App() {
   const [storeItem, setStoreItem] = useState([]);
@@ -16,15 +19,23 @@ function App() {
     }) 
   }, [])
 
-
+  
   return (
-    <Store
-    items={storeItem}
-    loading={loading}
-    onItemAdd={(itemData) =>{
-      setStoreItem([...storeItem, itemData])
-      }}/>
-  )
+    <BrowserRouter>
+      <Routes>
+      <Route path='/'  element={
+          <Store
+          loading={loading}
+          items={storeItem}
+          onItemAdd={(itemData) =>{
+            setStoreItem([...storeItem, itemData])
+            }}
+            />
+        } />
+      <Route exact path="/product/:id" element={<Product/>}/>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;

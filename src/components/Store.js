@@ -1,6 +1,8 @@
 import {Box, Heading, Spacer, Tag,Image, SimpleGrid,Center, GridItem, Input,Spinner} from "@chakra-ui/react";
 import Header from './Header';  
-import {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react';
+import {NavLink} from 'react-router-dom';
+
 const StoreItem = ({title, price, image}) =>{
     return (
         
@@ -43,7 +45,9 @@ function Store({items, loading}){
         <SimpleGrid  mt={4} p={2} columns={4} spacing={3}>
         {filteredItems.map(item => {
             return <GridItem>
+                <NavLink to={`/product/${item.id}`}>
                 <StoreItem {...item} />
+                </NavLink>
                 </GridItem> 
             
         })}
