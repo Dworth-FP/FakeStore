@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+import {useState, useEffect} from 'react'
+import React from 'react';
+import Store from './components/Store';
 import './App.css';
+import axios from 'axios';
+import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
 
 function App() {
+  const [storeItem, setStoreItem] = useState([]);
+  const [loading, setloading] = useState(true)
+
+  useEffect(() => {
+    axios.get('https://fakestoreapi.com/products').then(({data})=>{
+      setloading(false);
+      setStoreItem(data);
+    }) 
+  }, [])
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Store
+    items={storeItem}
+    loading={loading}
+    onItemAdd={(itemData) =>{
+      setStoreItem([...storeItem, itemData])
+      }}/>
+  )
 }
 
 export default App;
