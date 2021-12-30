@@ -9,8 +9,6 @@ import axios from 'axios';
 
 function Product() {
     const {id} = useParams();
-
-
     const [obtenerDatos, setObtenerDatos] = useState([]);
 
     useEffect(() => {
@@ -18,12 +16,12 @@ function Product() {
         setObtenerDatos(data);
 
         }) 
-    }, [id])
+    }, [id]);
 
 
-    return <>
+    return <div>
     <Box p={4} shadow="md">
-        {obtenerDatos.title}
+        <Heading>{obtenerDatos.title}</Heading>
         </Box>
         <Box p={8} d="flex" alignItems="center">
             <Image w={48} src={obtenerDatos.image} />
@@ -41,6 +39,7 @@ function Product() {
 
             </Box>
         </Box>
-        </>
+        </div>
+
 }
 export default Product;

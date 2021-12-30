@@ -1,11 +1,7 @@
 
 import React from 'react';
 import './App.css';
-
-
-
 import {BrowserRouter,Route,Routes} from "react-router-dom";
-
 import Store from './components/Store';
 import Product from './components/Product';
 
@@ -15,7 +11,7 @@ function App() {
     <BrowserRouter>
       <Routes>
       <Route
-      exact path='/'
+      path='/'
         element={
           <Store/>
         } />
