@@ -15,7 +15,7 @@ const StoreItem = ({title, price, image}) =>{
         </Box>
     )}
 
-// eslint-disable-next-line no-empty-pattern
+
 function Store(){
     const [filteredItems, setFilteredItems] = useState([]);
     const [storeItem, setStoreItem] = useState([]);
