@@ -71,7 +71,7 @@ function Store() {
   return (
     <Box>
       <Center>
-        <Text fontFamily="sans-serif" fontWeight="bold" fontSize={40}>
+        <Text mt={6} fontFamily="sans-serif" fontWeight="bold" fontSize={40}>
           Bienvenidos a Global Store
         </Text>
       </Center>
